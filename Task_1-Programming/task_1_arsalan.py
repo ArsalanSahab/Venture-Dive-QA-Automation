@@ -32,41 +32,77 @@ def reverse_string(str = "abcdef") :
 
 def sort_list_asc( my_list = [5, 9, 2, 5, 0, 5, 3, 1, 10] ) :
 
-    my_list.sort()
+    sorted_list = []
+
+    while my_list:
+
+        cur_min_num = my_list[0]
+        for num in my_list:
+            if num < cur_min_num:
+                cur_min_num = num
+        sorted_list.append(cur_min_num)
+        my_list.remove(cur_min_num)
    
-    print(my_list)
+    print(sorted_list)
 
 # Question # 5 : Write a Program to sort a string/list in descending order?
 
 def sort_list_dsc( my_list = [5, 9, 2, 5, 0, 5, 3, 1, 10] ) :
 
-    my_list.sort(reverse=True)
+    sorted_list = []
+
+    while my_list:
+
+        cur_max_num = my_list[-1]
+
+        for num in my_list:
+            if num > cur_max_num:
+                cur_max_num = num
+        sorted_list.append(cur_max_num)
+        my_list.remove(cur_max_num)
     
-    print(my_list)
+    print(sorted_list)
 
 # Question # 6 : Write a Program to find the Second Highest Number from an Array?
 
 def get_second_highest( my_list = [5, 9, 2, 5, 0, 5, 3, 1, 10, 10] ) :
 
-    # Step 1 Sort in Ascending
-    my_list.sort()
+    # Step 1 Sort in Descending
+    
+    sorted_list = []
 
-    # COvert to Set to remove repititions
+    while my_list:
 
-    my_set = set(my_list)
+        cur_max_num = my_list[-1]
 
-    # Convert Again
+        for num in my_list:
+            if num > cur_max_num:
+                cur_max_num = num
+        sorted_list.append(cur_max_num)
+        my_list.remove(cur_max_num)
 
-    my_list = list(my_set)
+    # Remove repititions
 
-    print("Second Highest Number is : {}".format(my_list[-2]))
+    new_list =[]
+    for num in sorted_list:
+        if num not in new_list:
+            new_list.append(num)
+
+    print("Second Highest Number is : {}".format(new_list[1]))
    
 
 # Question # 7 : Write a Program to swap 2 integer values wihout using a third variable?
 
 def swap_no_temp(num_a = 6, num_b = 2):
 
-    print("I do not know how to solve this question")
+    print("First Number is {}, Second Number is {}".format(num_a, num_b))
+
+    num_a = num_a + num_b
+    num_b = num_a - num_b
+    num_a = num_a - num_b
+
+
+    print("After Swapping, First Number is {}, Second Number is {}".format(num_a,num_b))
 
 
 # Question # 8 : Write a Progrm to find if given input number is Prime or Not?
@@ -93,7 +129,12 @@ def prime_or_not(num = 7):
 
 def print_pyramid(num = 6):
 
-   print("I do not know how to solve this question")
+   for x in range(1,num):
+
+       for y in range(1,x+1):
+           print(y, end='')
+
+       print('\r')
 
 # Question # 10 : Write a Program to Print if input number is even or odd?
 
